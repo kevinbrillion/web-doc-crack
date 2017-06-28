@@ -352,7 +352,6 @@ SECTION INTRODUCTION
 
 .title_intro {
   font-size: 6em;
-  margin-top: 150px;
   margin-bottom: 50px;
   font-weight: 300;
   letter-spacing: 5px;
@@ -443,7 +442,7 @@ SECTION INTRODUCTION
 
 .align_content--left {
   position: absolute;
-  top: 60%;
+  top: 50%;
   text-align: left;
   color: #fefefe;
   z-index: 10;
