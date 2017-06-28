@@ -1,14 +1,31 @@
 .marginLeft {
   margin-left: 20px;
 }
-@font-face {
-    font-family: Gotham-Ultra;
-    src: url(./fonts/Gotham-Ultra.otf);
-}
+
 @CHARSET "ISO-8859-1";
 
 /* Reset CSS
 * --------------------------------------- */
+
+@font-face {
+  font-family: gotham-ultra;
+  src: url('./fonts/Gotham-Ultra.otf');
+}
+
+@font-face {
+  font-family: gotham-medium;
+  src: url('./fonts/Gotham-Medium.otf');
+}
+
+@font-face {
+  font-family: gotham-book;
+  src: url('./fonts/Gotham-Book.otf');
+}
+
+@font-face {
+  font-family: gotham-bold;
+  src: url('./fonts/Gotham-Bold.otf');
+}
 
 body,
 div,
@@ -33,8 +50,8 @@ p,
 blockquote,
 th,
 td {
-  font-family: Gotham-Ultra;
-  color: #000;
+  font-family: gotham-medium, Arial, sans-serif;
+  color: #fff;
   padding: 0;
   margin: 0;
 }
@@ -87,7 +104,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Gotham-Ultra;
   font-weight: normal;
   font-size: 100%;
   margin: 0;
@@ -136,6 +152,7 @@ p {
 }
 
 .section {
+  z-index: -3;
   text-align: center;
 }
 
@@ -190,50 +207,166 @@ p {
 }
 
 
-/* Sections
-* --------------------------------------- */
+/************************
 
-#section0 {
-  background-image: url(../images/chapter1_slide1.jpeg);
-  background-size: cover;
-  color: white;
-}
+GENERAL
+
+********************/
 
 .sections {
+  position: relative;
   height: 100vh;
   width: 100vw;
-  background: url('../images/commencer.png') no-repeat fixed center center;
   background-size: cover;
+  z-index: -3;
 }
 
 .sections_wrapper {
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   text-align: center;
   padding: 100px;
 }
 
-.sections_wrapper>h1,
-.sections_wrapper>p,
-.sections_wrapper>.btns {
+.sections_wrapper--content {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  padding: 50px;
+}
+
+.sections_wrapper_container {
+  position: relative;
+  width: 960px;
+  margin: auto;
+}
+
+h2 {
+  font-family: gotham-ultra;
+}
+
+h4 {
+  font-weight: 300;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+p {
+  font-family: gotham-medium;
+  font-weight: 300;
+  line-height: 40px;
+}
+
+.description {
+  width: 50%;
+  line-height: 30px;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+.gradient::before {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: -2;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.8+18,0+99 */
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 18%, rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 18%, rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.8) 18%, rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc000000', endColorstr='#00000000', GradientType=1);
+  /* IE6-9 */
+}
+
+.gradient::after {
+  position: absolute;
+  content: '';
+  right: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: -2;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.8+81 */
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 81%, rgba(0, 0, 0, 0.8) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 81%, rgba(0, 0, 0, 0.8) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 81%, rgba(0, 0, 0, 0.8) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#cc000000', GradientType=1);
+  /* IE6-9 */
+}
+
+
+/***************
+
+SECTION INTRODUCTION
+
+*****************/
+
+#section0 {
+  background: url('../images/1.png') center center;
+  background-size: cover;
+}
+
+.sections_wrapper>.sections_wrapper_container>h2,
+.sections_wrapper>.sections_wrapper_container>p,
+.sections_wrapper>.sections_wrapper_container>.btns {
   text-align: center;
   color: white;
 }
 
-.title_commencer {
+.chapter {
+  font-size: 1.5em;
+  letter-spacing: 7px;
+  font-weight: 300;
+  margin-bottom: 30px;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.chapter_number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chapter_number>.number {
+  font-size: 2em;
+  color: #fefefe;
+  padding: 10px 20px;
+  border: 7px solid #FFC900;
+  margin: 20px;
+}
+
+.chapter_number>.decorations_chapter {
+  display: inline-block;
+  height: 40px;
+  width: 8px;
+  background: #FFC900;
+}
+
+.title_intro {
   font-size: 6em;
-  margin-top: 300px;
+  margin-top: 150px;
   margin-bottom: 50px;
   font-weight: 300;
   letter-spacing: 5px;
+  text-transform: uppercase;
 }
 
-.text_commencer {
+.text_intro {
   font-size: 1.5em;
   margin-bottom: 70px;
-  font-weight: 300;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+  font-size: 1.3em;
+  font-family: gotham-book;
 }
 
 .btns {
@@ -245,11 +378,164 @@ p {
   border: 3px solid #FFC900;
   padding: 20px;
   transition: background-color 0.5s;
+  font-family: 'Open Sans', Arial, sans-serif;
   letter-spacing: 2px;
   font-weight: 300;
 }
 
 .btns:hover {
+  background-color: #FFC900;
+  color: #fefefe !important;
+}
+
+.scroll_object {
+  margin: auto;
+  height: 45px;
+  width: 30px;
+  border: 2px solid #FFC900;
+  border-radius: 50px;
+  padding: 12px;
+}
+
+.scroll_object>.round {
+  height: 3px;
+  width: 3px;
+  background-color: #FFC900;
+}
+
+.animation_scroll {
+  animation-name: scroll;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(17px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+#section1 {
+  background: url('../images/intro_section_2.png') center center;
+  background-size: cover;
+}
+
+.section_text .chapter_number>.number {
+  font-size: 1.5em;
+  color: #fefefe;
+  padding: 5px 10px;
+  border: 5px solid #FFC900;
+  margin: 5px 10px;
+  z-index: 10;
+}
+
+.section_text .chapter_number>.decorations_chapter {
+  display: inline-block;
+  height: 22px;
+  width: 5px;
+  background: #FFC900;
+}
+
+.align_content--left {
+  position: absolute;
+  top: 500px;
+  text-align: left;
+  color: #fefefe;
+  z-index: 10;
+  margin-left: 50px;
+}
+
+.separator {
+  width: 150px;
+  height: 20px;
+  margin-bottom: 50px;
+}
+
+.separator_left {
+  display: inline-block;
+  width: 120px;
+  height: 10px;
+  border: 2px solid #FFC900;
+}
+
+.separator_right {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  background: #FFC900;
+}
+
+#section2 {
+  background: url('../images/intro_section_3.png') center center;
+  background-size: cover;
+}
+
+#section3 {
+  background: url('../images/intro_section_4.png') center center;
+  background-size: cover;
+}
+
+#section4 {
+  background: url('../images/intro_section_5.png') center center;
+  background-size: cover;
+}
+
+#section5 {
+  background: url('../images/intro_section_6.png') center center;
+  background-size: cover;
+}
+
+#section6 {
+  background: url('../images/intro_section_.png') center center;
+  background-size: cover;
+}
+
+#section7 {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background: url('../images/intro_section_8.png') center center;
+}
+
+.end-of-chapter {
+  text-align: center;
+  margin-top: 200px;
+}
+
+.sections_wrapper_content {
+  position: absolute;
+  z-index: 20;
+}
+
+.citation {
+  margin-bottom: 200px;
+  color: #fefefe;
+  font-size: 2em;
+  z-index: 10;
+}
+
+.end-of-chapter .discover {
+  color: #FFC900 !important;
+  font-size: 1.5em;
+  text-decoration: none;
+  width: 222px;
+  height: 60px;
+  border: 3px solid #FFC900;
+  padding: 20px;
+  transition: background-color 0.5s;
+  font-family: gotham-bold, Arial, sans-serif;
+  letter-spacing: 6px;
+}
+
+.end-of-chapter .discover:hover {
   background-color: #FFC900;
   color: #fefefe !important;
 }
@@ -261,10 +547,68 @@ p {
   height: 50px;
   width: 100vw;
   background: #2D2D2D;
-  padding: 15px;
+  padding: 10px;
 }
 
 .wrapper-footer>p {
   color: #fefefe;
   font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.section_commencer {
+  height: 100vh;
+  width: 100vw;
+  background: url('../images/commencer.png');
+  background-size: cover;
+}
+
+.section_commencer .sections_wrapper {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 100px;
+}
+
+.section_commencer .sections_wrapper>h1,
+.commencer.sections>.sections_wrapper>p,
+.commencer.sections>.sections_wrapper>.btns {
+  text-align: center;
+  color: white;
+}
+
+.section_commencer .title_commencer {
+  font-size: 6em;
+  margin-top: 300px;
+  margin-bottom: 50px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 5px;
+}
+
+.section_commencer .text_commencer {
+  font-size: 1.5em;
+  margin-bottom: 70px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.section_commencer .btns {
+  color: #FFC900 !important;
+  font-size: 2em;
+  text-decoration: none;
+  width: 222px;
+  height: 60px;
+  border: 3px solid #FFC900;
+  padding: 20px;
+  transition: background-color 0.5s;
+  font-family: 'Open Sans', Arial, sans-serif;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.section_commencer .btns:hover {
+  background-color: #FFC900;
+  color: #fefefe !important;
 }

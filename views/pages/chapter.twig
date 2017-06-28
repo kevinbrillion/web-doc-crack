@@ -1,81 +1,104 @@
 {{ include('partials/header.twig') }}
 
-<!--
-<div class="projects-container" style="display:none;">
-  <ul>
-    <li class="cd-single-project">
-      <a href="{{ url('chapter', {id: '1'}) }}">
-        <div class="cd-title">
-          <h2>Chapitre 1</h2>
-          <p>Brief description of the project here</p>
-        </div>
-      </a>
-    </li>
-    <li class="cd-single-project">
-      <a href="{{ url('chapter', {id: '2'}) }}">
-        <div class="cd-title">
-          <h2>Chapitre 2</h2>
-          <p>Brief description of the project here</p>
-        </div>
-      </a>
-    </li>
-    <li class="cd-single-project">
-      <a href="{{ url('chapter', {id: '3'}) }}">
-        <div class="cd-title">
-          <h2>Chapitre 3</h2>
-          <p>Brief description of the project here</p>
-        </div>
-      </a>
-    </li>
-    <li class="cd-single-project">
-      <a href="{{ url('chapter', {id: '4'}) }}">
-        <div class="cd-title">
-          <h2>Chapitre 4</h2>
-          <p>Brief description of the project here</p>
-        </div>
-      </a>
-    </li>
-  </ul>
-</div>
--->
-
-
-<ul id="menu">
+<ul id="menu" style="bottom: 40px;">
   <div style="display: inline-block; vertical-align:middle;">MENU</div>
   <li data-menuanchor="Page1">
     <a href="#Page1"></a>
   </li>
-  <li data-menuanchor="Page2">
-    <a href="#Page2"></a>
+  {% for _slide in slides %}
+    <li data-menuanchor="Page{{(_slide.order_chapter + 1)}}">
+      <a href="#Page{{(_slide.order_chapter + 1)}}"></a>
   </li>
-  <li data-menuanchor="Page3">
-    <a href="#Page3"></a>
-  </li>
-  <li data-menuanchor="Page4">
-    <a href="#Page4"></a>
-  </li>
-  <li data-menuanchor="Page5">
-    <a href="#Page5"></a>
-  </li>
-  <li data-menuanchor="Page6">
-    <a href="#Page6"></a>
+  {% endfor %}
+  <li data-menuanchor="Page7">
+    <a href="#Page7"></a>
   </li>
 </ul>
 
 <div id="fullpage">
-  <div class="section" id="section0">
-    <h1>{{chapter.id}}</h1>
-    <h1>{{chapter.name}}</h1>
-    <input type="hidden" name="id" value="1" />
-    <p>{{chapter.name}}</p>
+  <div class="section" id="section0" style="
+                                            background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/intro.png') center center;
+                                            background-size: cover;">
+    <section class="sections section_intro">
+      <div class="sections_wrapper">
+        <div class="sections_wrapper_container">
+          <p class="chapter">CHAPITRE</p>
+          <span class="chapter_number">
+            <span class="decorations_chapter decoration_left"></span>
+            <span class="number">{{ chapter.id }}</span>
+            <span class="decorations_chapter decoration_left"></span>
+          </span>
+          <h2 class="title_intro">{{ chapter.name }}</h2>
+          <p class="text_intro">{{ chapter.content }}</p>
+          <div class="scroll_object">
+            <div class="round animation_scroll"></div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
   {% for _slide in slides %}
-  <div class="section" id="section{{_slide.id}}">
-    <h1>{{_slide.name}}</h1>
-    <input type="hidden" name="id" value="1" />
-    <p>{{_slide.contents}}</p>
+    <div class="section sections section_text" id="section{{_slide.order_chapter}}" {% if _slide.video == 0 %}
+      style="
+      background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/{{(_slide.order_chapter + 1)}}.png') center center;
+    background-size: cover;"{% endif %}>
+      <div class="sections_wrapper--content gradient">
+      {% if _slide.video == 1 %}
+      <video class="myVideo" loop muted data-autoplay>
+        <source src="imgs/flowers.mp4" type="video/mp4">
+        <source src="imgs/flowers.webm" type="video/webm">
+      </video>
+       {% endif %}
+      {% if _slide.video == 1 %}
+      <audio class="myVideo" loop muted data-autoplay>
+        <source src="imgs/flowers.mp4" type="video/mp4">
+        <source src="imgs/flowers.webm" type="video/webm">
+      </audio>
+       {% endif %}
+        <span class="chapter_number">
+          <span class="decorations_chapter decoration_left"></span>
+          <span class="number">{{chapter.id}}</span>
+          <span class="decorations_chapter decoration_left"></span>
+        </span>
+        <div class="align_content--left">
+          <h4>{{_slide.name}}</h4>
+          <div class="separator">
+            <div class="separator_left"></div>
+            <div class="separator_right"></div>
+          </div>
+          <p class="description">{{_slide.contents}} </p>
+        </div>
+      </div>
   </div>
   {% endfor %}
+
+  <div class="section section_text" id="section7" style="
+                                                         background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/end.png') center center;
+                                                         background-size: cover;">
+    <div class="sections_wrapper gradient">
+
+      <span class="chapter_number">
+        <span class="decorations_chapter decoration_left"></span>
+        <span class="number">{{ chapter.id }}</span>
+        <span class="decorations_chapter decoration_left"></span>
+      </span>
+      <div class="align_content end-of-chapter">
+        <p class="citation">
+          {{ chapter.end }}
+        </p>
+
+        <a href="" class="discover"> DÉCOUVRIR LA COLLINE DU CRACK</a>
+
+      </div>
+
+    </div>
+  </div>
 </div>
+
+<footer class="footer" style="bottom:0px;">
+  <div class="wrapper-footer">
+    <p style="font-size: 10px;">© Tous droits réservés</p>
+  </div>
+</footer>
 
 {{ include('partials/footer.twig') }}
