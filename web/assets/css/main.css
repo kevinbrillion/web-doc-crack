@@ -215,8 +215,6 @@ GENERAL
 
 .sections {
   position: relative;
-  height: 100vh;
-  width: 100vw;
   background-size: cover;
   z-index: -3;
 }
@@ -445,7 +443,7 @@ SECTION INTRODUCTION
 
 .align_content--left {
   position: absolute;
-  top: 500px;
+  top: 60%;
   text-align: left;
   color: #fefefe;
   z-index: 10;
@@ -498,16 +496,13 @@ SECTION INTRODUCTION
 }
 
 #section7 {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  background-size: cover;
   background: url('../images/intro_section_8.png') center center;
+  background-size: cover;
 }
 
 .end-of-chapter {
   text-align: center;
-  margin-top: 200px;
+  margin-top: 25%;
 }
 
 .sections_wrapper_content {
@@ -516,7 +511,7 @@ SECTION INTRODUCTION
 }
 
 .citation {
-  margin-bottom: 200px;
+  margin-bottom: 25%;
   color: #fefefe;
   font-size: 2em;
   z-index: 10;
@@ -526,7 +521,7 @@ SECTION INTRODUCTION
   color: #FFC900 !important;
   font-size: 1.5em;
   text-decoration: none;
-  width: 222px;
+  width: 20%;
   height: 60px;
   border: 3px solid #FFC900;
   padding: 20px;
