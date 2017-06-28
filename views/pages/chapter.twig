@@ -1,25 +1,81 @@
 {{ include('partials/header.twig') }}
 
+<!--
+<div class="projects-container" style="display:none;">
+  <ul>
+    <li class="cd-single-project">
+      <a href="{{ url('chapter', {id: '1'}) }}">
+        <div class="cd-title">
+          <h2>Chapitre 1</h2>
+          <p>Brief description of the project here</p>
+        </div>
+      </a>
+    </li>
+    <li class="cd-single-project">
+      <a href="{{ url('chapter', {id: '2'}) }}">
+        <div class="cd-title">
+          <h2>Chapitre 2</h2>
+          <p>Brief description of the project here</p>
+        </div>
+      </a>
+    </li>
+    <li class="cd-single-project">
+      <a href="{{ url('chapter', {id: '3'}) }}">
+        <div class="cd-title">
+          <h2>Chapitre 3</h2>
+          <p>Brief description of the project here</p>
+        </div>
+      </a>
+    </li>
+    <li class="cd-single-project">
+      <a href="{{ url('chapter', {id: '4'}) }}">
+        <div class="cd-title">
+          <h2>Chapitre 4</h2>
+          <p>Brief description of the project here</p>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+-->
+
+
 <ul id="menu">
-    <li data-menuanchor="firstPage"><a href="#firstPage">Slide 1</a></li>
-    <li data-menuanchor="secondPage"><a href="#secondPage">Slide 2</a></li>
-    <li data-menuanchor="3rdPage"><a href="#3rdPage">Slide 3</a></li>
+  <div style="display: inline-block; vertical-align:middle;">MENU</div>
+  <li data-menuanchor="Page1">
+    <a href="#Page1"></a>
+  </li>
+  <li data-menuanchor="Page2">
+    <a href="#Page2"></a>
+  </li>
+  <li data-menuanchor="Page3">
+    <a href="#Page3"></a>
+  </li>
+  <li data-menuanchor="Page4">
+    <a href="#Page4"></a>
+  </li>
+  <li data-menuanchor="Page5">
+    <a href="#Page5"></a>
+  </li>
+  <li data-menuanchor="Page6">
+    <a href="#Page6"></a>
+  </li>
 </ul>
 
 <div id="fullpage">
-    <div class="section" id="section0">
-        <h1>1</h1>
-        <h1>{{chapter.name}}</h1>
-        <input type="hidden" name="id" value="1" />
-        <p>{{chapter.name}}</p>
-    </div>
-    {% for _slide in slides %}
-    <div class="section" id="section{{_slide.id}}">
-            <h1>{{_slide.name}}</h1>
-            <input type="hidden" name="id" value="1" />
-            <p>{{_slide.contents}}</p>
-    </div>
-    {% endfor %}
+  <div class="section" id="section0">
+    <h1>{{chapter.id}}</h1>
+    <h1>{{chapter.name}}</h1>
+    <input type="hidden" name="id" value="1" />
+    <p>{{chapter.name}}</p>
+  </div>
+  {% for _slide in slides %}
+  <div class="section" id="section{{_slide.id}}">
+    <h1>{{_slide.name}}</h1>
+    <input type="hidden" name="id" value="1" />
+    <p>{{_slide.contents}}</p>
+  </div>
+  {% endfor %}
 </div>
 
 {{ include('partials/footer.twig') }}
