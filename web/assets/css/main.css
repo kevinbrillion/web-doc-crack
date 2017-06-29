@@ -1,5 +1,13 @@
-.marginLeft {
-  margin-left: 20px;
+*,
+*::after,
+*::before {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 @CHARSET "ISO-8859-1";
@@ -125,7 +133,7 @@ acronym {
 * --------------------------------------- */
 
 body {
-  font-family: arial, helvetica;
+  font-family: gotham-medium, arial, helvetica;
   color: #333;
   color: rgba(0, 0, 0, 0.5);
 }
@@ -258,10 +266,11 @@ p {
 }
 
 .description {
+  font-family: gotham-book;
   width: 50%;
   line-height: 30px;
   font-weight: 400;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 
 .gradient::before {
@@ -317,17 +326,15 @@ SECTION INTRODUCTION
 }
 
 .chapter {
-  font-size: 1.5em;
+  font-size: 1em;
   letter-spacing: 7px;
   font-weight: 300;
-  margin-bottom: 30px;
   padding-top: 50px;
   font-family: gotham-medium, Arial, sans-serif;
   text-transform: uppercase;
 }
 
 .chapter_number {
-  padding-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -336,7 +343,7 @@ SECTION INTRODUCTION
 .chapter_number>.number {
   font-size: 2em;
   color: #fefefe;
-  padding: 10px 20px;
+  padding: 10px 25px;
   border: 7px solid #FFC900;
   margin: 20px;
 }
@@ -349,7 +356,7 @@ SECTION INTRODUCTION
 }
 
 .title_intro {
-  font-size: 6em;
+  font-size: 4em;
   margin-bottom: 50px;
   font-weight: 300;
   letter-spacing: 5px;
@@ -422,10 +429,14 @@ SECTION INTRODUCTION
   background-size: cover;
 }
 
+.section_text .chapter_number{
+  padding-top: 50px;
+}
+
 .section_text .chapter_number>.number {
   font-size: 1.5em;
   color: #fefefe;
-  padding: 5px 10px;
+  padding: 5px 15px;
   border: 5px solid #FFC900;
   margin: 5px 10px;
   z-index: 10;
@@ -514,7 +525,7 @@ SECTION INTRODUCTION
 
 .wrapper-footer>p {
   color: #fefefe;
-  font-family: 'Open Sans', Arial, sans-serif;
+  font-family: gotham-medium, Arial, sans-serif;
 }
 
 .section_commencer {
@@ -574,3 +585,62 @@ SECTION INTRODUCTION
   background-color: #FFC900;
   color: #fefefe !important;
 }
+
+.segmenter {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+}
+
+.segmenter__image {
+	width: 100%;
+	display: block;
+}
+
+.segmenter__background,
+.segmenter__pieces,
+.segmenter__piece-wrap,
+.segmenter__piece-parallax,
+.segmenter__piece {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.segmenter__piece-parallax {
+	-webkit-transition: -webkit-transform 0.2s ease-out;
+	transition: transform 0.2s ease-out;
+}
+
+.segmenter__pieces {
+	-webkit-perspective: 400px;
+	perspective: 400px;
+}
+
+.segmenter__background,
+.segmenter__piece {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.segmenter__shadow {
+	position: absolute;
+	opacity: 0;
+	box-shadow: 0px 2px 15px rgba(0,0,0,0.7);
+}
+
+.demo-5 .segmenter__shadow {
+	box-shadow: 0px 18px 29px rgba(4, 19, 22, 0.65);
+}
+
+.demo-5 a { color: #8a74a0; }
+.demo-5 .btn { background: rgba(138, 116, 160, 0.7); color: #fff; }
+.demo-5 .btn:hover { background: rgba(138, 116, 160,1); }
+.demo-5 .trigger-headline { color: #E61572;}
+.demo-5 .github-icon { fill: #8a74a0;}

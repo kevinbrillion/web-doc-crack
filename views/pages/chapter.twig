@@ -1,5 +1,5 @@
 {{ include('partials/header.twig') }}
-
+<button id="my_mute_button" style="position:fixed; top: 50px; z-index: 1000;">Mute</button>
 <ul id="menu" style="bottom: 40px;">
   <div style="display: inline-block; vertical-align:middle;">MENU</div>
   <li data-menuanchor="Page1">
@@ -50,7 +50,7 @@
           </video>
         {% endif %}
         {% if _slide.audio == 1 %}
-          <audio loop data-autoplay>
+          <audio data-autoplay>
               <source src="{{ global.request.basepath }}/assets/sounds/{{chapter.id}}/{{_slide.order_chapter}}.mp3" type="audio/mp3">
               Your browser does not support the audio element.
           </audio>

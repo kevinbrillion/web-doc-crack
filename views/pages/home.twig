@@ -1,21 +1,24 @@
 {{ include('partials/header.twig') }}
 
-<div id="container">
+<button id="muteBtn" style="position:fixed; top: 50px;">Mute</button>
 
-  <section class="sections section_commencer">
+  <section class="sections section_commencer demo-5">
     <div class="sections_wrapper">
-      <h1 class="title_commencer">CRACKOPARIS</h1>
-      <p class="text_commencer">...</p>
+     <div class="segmenter" style="background-image: url({{global.request.basepath}}/assets/images/commencer.jpg)"></div>
+      <h2 class="trigger-headline trigger-headline--hidden"><span>C</span><span>R</span><span>A</span><span>C</span><span>K</span><span>O</span><span>P</span><span>A</span><span>R</span><span>I</span><span>S</span></h2>
       <a href="#" class="btns">COMMENCER</a>
     </div>
   </section>
 
-
-</div>
 <footer class="footer">
   <div class="wrapper-footer">
     <p>© Tous droits réservés</p>
   </div>
 </footer>
+
+
+<script src="{{global.request.basepath}}/assets/js/anime.min.js"></script>
+<script src="{{global.request.basepath}}/assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="{{global.request.basepath}}/assets/js/animationHome.js"></script>
 
 {{ include('partials/footer.twig') }}
