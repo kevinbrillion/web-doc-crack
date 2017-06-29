@@ -19,10 +19,10 @@
   <div class="section" id="section0" style="
                                             background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/intro.png') center center;
                                             background-size: cover;">
-    <section class="sections section_intro">
+    <section class="sections">
       <div class="sections_wrapper">
         <div class="sections_wrapper_container">
-          <p class="chapter">CHAPITRE</p>
+          <p class="chapter">Chapitre</p>
           <span class="chapter_number">
             <span class="decorations_chapter decoration_left"></span>
             <span class="number">{{ chapter.id }}</span>
@@ -40,21 +40,21 @@
   {% for _slide in slides %}
     <div class="section sections section_text" id="section{{_slide.order_chapter}}" {% if _slide.video == 0 %}
       style="
-      background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/{{(_slide.order_chapter + 1)}}.png') center center;
-    background-size: cover;"{% endif %}>
+            background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/{{(_slide.order_chapter + 1)}}.png') center center;
+            background-size: cover;"{% endif %}
+            >
       <div class="sections_wrapper--content gradient">
-      {% if _slide.video == 1 %}
-      <video class="myVideo" loop muted data-autoplay>
-        <source src="imgs/flowers.mp4" type="video/mp4">
-        <source src="imgs/flowers.webm" type="video/webm">
-      </video>
-       {% endif %}
-      {% if _slide.video == 1 %}
-      <audio class="myVideo" loop muted data-autoplay>
-        <source src="imgs/flowers.mp4" type="video/mp4">
-        <source src="imgs/flowers.webm" type="video/webm">
-      </audio>
-       {% endif %}
+        {% if _slide.video == 1 %}
+          <video class="myVideo" loop muted data-autoplay style="z-index:-10;">
+            <source src="{{ global.request.basepath }}/assets/videos/{{chapter.id}}/{{_slide.order_chapter}}.mp4" type="video/mp4">
+          </video>
+        {% endif %}
+        {% if _slide.audio == 1 %}
+          <audio loop data-autoplay>
+              <source src="{{ global.request.basepath }}/assets/sounds/{{chapter.id}}/{{_slide.order_chapter}}.mp3" type="audio/mp3">
+              Your browser does not support the audio element.
+          </audio>
+        {% endif %}
         <span class="chapter_number">
           <span class="decorations_chapter decoration_left"></span>
           <span class="number">{{chapter.id}}</span>
@@ -74,7 +74,8 @@
 
   <div class="section section_text" id="section7" style="
                                                          background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/end.png') center center;
-                                                         background-size: cover;">
+                                                         background-size: cover;
+                                                         ">
     <div class="sections_wrapper gradient">
 
       <span class="chapter_number">
@@ -87,7 +88,7 @@
           {{ chapter.end }}
         </p>
 
-        <a href="{{ url('chapter', {id: '2'}) }}" class="discover"> DÉCOUVRIR LA COLLINE DU CRACK</a>
+        <a href="{{ app.url_generator.generate('chapter', {'id': (chapter.id + 1)  } ) }}" class="discover"> {{chapter.endbtn}} </a>
 
       </div>
 

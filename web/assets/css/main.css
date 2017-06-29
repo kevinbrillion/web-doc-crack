@@ -216,23 +216,23 @@ GENERAL
 .sections {
   position: relative;
   background-size: cover;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
   z-index: -3;
 }
 
 .sections_wrapper {
-  height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  height: 100%;
   text-align: center;
-  padding: 100px;
 }
 
 .sections_wrapper--content {
-  height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
   text-align: center;
-  padding: 50px;
 }
 
 .sections_wrapper_container {
@@ -309,11 +309,6 @@ SECTION INTRODUCTION
 
 *****************/
 
-#section0 {
-  background: url('../images/1.png') center center;
-  background-size: cover;
-}
-
 .sections_wrapper>.sections_wrapper_container>h2,
 .sections_wrapper>.sections_wrapper_container>p,
 .sections_wrapper>.sections_wrapper_container>.btns {
@@ -326,10 +321,13 @@ SECTION INTRODUCTION
   letter-spacing: 7px;
   font-weight: 300;
   margin-bottom: 30px;
-  font-family: 'Open Sans', Arial, sans-serif;
+  padding-top: 50px;
+  font-family: gotham-medium, Arial, sans-serif;
+  text-transform: uppercase;
 }
 
 .chapter_number {
+  padding-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -386,7 +384,7 @@ SECTION INTRODUCTION
 }
 
 .scroll_object {
-  margin: auto;
+  margin: 0 auto;
   height: 45px;
   width: 30px;
   border: 2px solid #FFC900;
@@ -469,39 +467,9 @@ SECTION INTRODUCTION
   background: #FFC900;
 }
 
-#section2 {
-  background: url('../images/intro_section_3.png') center center;
-  background-size: cover;
-}
-
-#section3 {
-  background: url('../images/intro_section_4.png') center center;
-  background-size: cover;
-}
-
-#section4 {
-  background: url('../images/intro_section_5.png') center center;
-  background-size: cover;
-}
-
-#section5 {
-  background: url('../images/intro_section_6.png') center center;
-  background-size: cover;
-}
-
-#section6 {
-  background: url('../images/intro_section_.png') center center;
-  background-size: cover;
-}
-
-#section7 {
-  background: url('../images/intro_section_8.png') center center;
-  background-size: cover;
-}
-
 .end-of-chapter {
   text-align: center;
-  margin-top: 25%;
+  margin-top: 10%;
 }
 
 .sections_wrapper_content {
@@ -510,7 +478,7 @@ SECTION INTRODUCTION
 }
 
 .citation {
-  margin-bottom: 25%;
+  margin-bottom: 100px;
   color: #fefefe;
   font-size: 2em;
   z-index: 10;
