@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Carte de CrackoParis</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    
+    #map {
+      height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+  </style>
+  <link rel="stylesheet" href="{{global.request.basepath}}/assets/css/main.css">
+</head>
+
+<body>
+  <a href="#" style="text-align: center; position: fixed; z-index: 1000; top: 50px; left: 50px;" onclick="muteAudio()"><img style="width: 30px; height:30px;" src="{{ global.request.basepath }}/assets/images/sound.svg" /></a>
+
+  <a href="{{ url('chapter', {id: '1'}) }}" style="text-align: center; position: fixed; z-index: 1000; top: 100px; left: 50px;"><img style="width: 30px; height:30px;" src="{{ global.request.basepath }}/assets/images/docs.svg" /></a>
+
+  <audio id="global_music" autoplay>
+        <source src="{{ global.request.basepath }}/assets/sounds/1.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+</audio>
+
+  <div id="map"></div>
+
+  <div class="map_cards" style="z-index: 1000;">
+    <div class="cards card_1" onclick="ZoomAndCenter(48.892304,2.365735)">
+      <p class="title_card" id="la-chapelle">La Chapelle</p>
+    </div>
+    <div class="cards card_2" onclick="ZoomAndCenter(48.884251,2.365856)">
+      <p class="title_card" id="stalingrad">Stalingrad</p>
+    </div>
+    <div class="cards card_3" onclick="ZoomAndCenter(48.886959,2.349693)">
+      <p class="title_card" id="chateau-rouge">Château Rouge</p>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: new google.maps.LatLng(48.856191, 2.351652),
+        disableDefaultUI: true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [{
+            "featureType": "all",
+            "elementType": "labels.text.fill",
+            "stylers": [{
+                "saturation": 36
+              },
+              {
+                "color": "#000000"
+              },
+              {
+                "lightness": 40
+              }
+            ]
+          },
+          {
+            "featureType": "all",
+            "elementType": "labels.text.stroke",
+            "stylers": [{
+                "visibility": "on"
+              },
+              {
+                "color": "#000000"
+              },
+              {
+                "lightness": 16
+              }
+            ]
+          },
+          {
+            "featureType": "all",
+            "elementType": "labels.icon",
+            "stylers": [{
+              "visibility": "off"
+            }]
+          },
+          {
+            "featureType": "administrative",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 20
+              }
+            ]
+          },
+          {
+            "featureType": "administrative",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 17
+              },
+              {
+                "weight": 1.2
+              }
+            ]
+          },
+          {
+            "featureType": "landscape",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 20
+              }
+            ]
+          },
+          {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 21
+              }
+            ]
+          },
+          {
+            "featureType": "road.highway",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 17
+              }
+            ]
+          },
+          {
+            "featureType": "road.highway",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 29
+              },
+              {
+                "weight": 0.2
+              }
+            ]
+          },
+          {
+            "featureType": "road.arterial",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 18
+              }
+            ]
+          },
+          {
+            "featureType": "road.local",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 16
+              }
+            ]
+          },
+          {
+            "featureType": "transit",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 19
+              }
+            ]
+          },
+          {
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [{
+                "color": "#000000"
+              },
+              {
+                "lightness": 17
+              }
+            ]
+          }
+        ]
+      });
+    }
+
+    function ZoomAndCenter(lat, long) {
+      map.setCenter(new google.maps.LatLng(lat, long));
+      map.setZoom(15);
+    }
+
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAchQ-kGx6c5HDmD5i6vSmLWxbgJJlrOro&callback=initMap" async defer></script>
+  <script src="{{global.request.basepath}}/assets/js/main.js"></script>
+</body>
+
+</html>
