@@ -1,5 +1,20 @@
 {{ include('partials/header.twig') }}
 
-<h1>Error</h1>
+<div id="fullpage">
+  <section class="section sections section_commencer">
+    <video class="myVideo" data-autoplay style="z-index: -1000;" style="position: fixed; top:0;">
+        <source src="{{ global.request.basepath }}/assets/videos/intro.mp4" type="video/mp4">
+    </video>
+    <h2 class="title_intro" style="
+  text-align: center; font-size: 6em;">Erreur, pas d'inquiétude !</h2>
+    <h2 class="title_intro" style="
+  text-align: center; font-size: 6em;"></h2>
+
+    <a href="{{ url('home') }}" class="btns" style="text-align: center;">
+                    Retournez au site
+      </a>
+
+  </section>
+</div>
 
 {{ include('partials/footer.twig') }}

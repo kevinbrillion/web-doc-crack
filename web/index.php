@@ -60,6 +60,12 @@ $app->get('/', function() use ($app){
 
 })->bind('home');
 
+$app->get('/map', function() use ($app){
+
+    return $app['twig']->render('pages/map.twig');
+
+})->bind('map');
+
 $app->get('/chapter/{id}', function($id) use ($app){
     
     $data = array();
@@ -78,14 +84,13 @@ $app->get('/chapter/{id}', function($id) use ($app){
 
 })->assert('id', '\d+')->bind('chapter');
 
-//$app->error(function() use ($app){
-//    if($app['debug']){
-//        return;
-//    }
-//    $data = array();
-//    $data['title'] = 'Error';
-//    return $app['twig']-> render('pages/error.twig', $data);
-//});
+$app->error(function() use ($app)
+            {
+                $data = array();
+                $data['title'] = 'Manque de crack';
+
+                return $app['twig']->render('pages/error.twig', $data);
+            });
 
 // Run Silex NE PAS OUBLIER
 $app->run();

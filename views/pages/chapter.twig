@@ -1,78 +1,77 @@
 {{ include('partials/header.twig') }}
-<button id="my_mute_button" style="position:fixed; top: 50px; z-index: 1000;">Mute</button>
-<ul id="menu" style="bottom: 40px;">
-  <div style="display: inline-block; vertical-align:middle;">MENU</div>
-  <li data-menuanchor="Page1">
-    <a href="#Page1"></a>
-  </li>
-  {% for _slide in slides %}
-    <li data-menuanchor="Page{{(_slide.order_chapter + 1)}}">
-      <a href="#Page{{(_slide.order_chapter + 1)}}"></a>
-  </li>
-  {% endfor %}
-  <li data-menuanchor="Page7">
-    <a href="#Page7"></a>
-  </li>
-</ul>
+
+
+<a href="#" style="text-align: center; position: fixed; z-index: 1000; top: 50px; left: 50px;" onclick="muteAudio()"><img style="width: 30px; height:30px;" src="{{ global.request.basepath }}/assets/images/sound.svg"/></a>
+
+<a href="{{url('map')}}" style="text-align: center; position: fixed; z-index: 1000; top: 100px; left: 50px;"><img style="width: 30px; height:30px;" src="{{ global.request.basepath }}/assets/images/map.svg"/></a>
+
+<audio id="global_music" autoplay>
+        <source src="{{ global.request.basepath }}/assets/sounds/{{chapter.id}}.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+</audio>
 
 <div id="fullpage">
   <div class="section" id="section0" style="
                                             background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/intro.png') center center;
                                             background-size: cover;">
     <section class="sections">
-      <div class="sections_wrapper">
+      <div class="sections_wrapper wrap">
         <div class="sections_wrapper_container">
           <p class="chapter">Chapitre</p>
           <span class="chapter_number">
             <span class="decorations_chapter decoration_left"></span>
-            <span class="number">{{ chapter.id }}</span>
-            <span class="decorations_chapter decoration_left"></span>
+          <span class="number">{{ chapter.id }}</span>
+          <span class="decorations_chapter decoration_left"></span>
           </span>
           <h2 class="title_intro">{{ chapter.name }}</h2>
           <p class="text_intro">{{ chapter.content }}</p>
-          <div class="scroll_object">
-            <div class="round animation_scroll"></div>
-          </div>
         </div>
       </div>
     </section>
   </div>
   {% for _slide in slides %}
-    <div class="section sections section_text" id="section{{_slide.order_chapter}}" {% if _slide.video == 0 %}
-      style="
-            background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/{{(_slide.order_chapter + 1)}}.png') center center;
-            background-size: cover;"{% endif %}
-            >
-      <div class="sections_wrapper--content gradient">
-        {% if _slide.video == 1 %}
-          <video class="myVideo" loop muted data-autoplay style="z-index:-10;">
-            <source src="{{ global.request.basepath }}/assets/videos/{{chapter.id}}/{{_slide.order_chapter}}.mp4" type="video/mp4">
-          </video>
-        {% endif %}
-        {% if _slide.audio == 1 %}
-          <audio data-autoplay>
-              <source src="{{ global.request.basepath }}/assets/sounds/{{chapter.id}}/{{_slide.order_chapter}}.mp3" type="audio/mp3">
-              Your browser does not support the audio element.
-          </audio>
-        {% endif %}
-        <span class="chapter_number">
-          <span class="decorations_chapter decoration_left"></span>
-          <span class="number">{{chapter.id}}</span>
-          <span class="decorations_chapter decoration_left"></span>
-        </span>
-        <div class="align_content--left">
-          <h4>{{_slide.name}}</h4>
-          <div class="separator">
-            <div class="separator_left"></div>
-            <div class="separator_right"></div>
-          </div>
-          <p class="description">{{_slide.contents}} </p>
+  <div class="section sections section_text" id="section{{_slide.order_chapter}}" style="
+                                                                                         background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/{{(_slide.order_chapter + 1)}}.png') center center;
+                                                                                         background-size: cover;">
+    {% if _slide.full_content %}
+    <a href="#" class="sidebar-button" id="sidebar-button">
+      <img src="{{global.request.basepath}}/assets/images/docs.svg" alt="description" class="icons-sidebar icon-show-sidebar">
+      <img src="{{global.request.basepath}}/assets/images/cancel.svg" alt="description" class="icons-sidebar icon-hide-sidebar icon-cancel-sidebar">
+    </a>
+    <div class="hide-sidebar">
+      <h3 class="sidebar-title">{{ _slide.name }}</h3>
+      <div class="sidebar-separator"></div>
+      <p class="sidebar-text">{{ _slide.full_content }}
+      </p>
+    </div>
+    {% endif %}
+
+    <div class="sections_wrapper--content gradient">
+      {% if _slide.video == 1 %}
+      <video class="myVideo" loop {% if _slide.audio==1 and _slide.video==1 %} muted {% endif %} data-autoplay>
+        <source src="{{ global.request.basepath }}/assets/videos/{{chapter.id}}/{{_slide.order_chapter}}.mp4" type="video/mp4">
+      </video> {% endif %} {% if _slide.audio == 1 %}
+      <audio data-autoplay>
+        <source src="{{ global.request.basepath }}/assets/sounds/{{chapter.id}}/{{_slide.order_chapter}}.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio> {% endif %}
+      <span class="chapter_number">
+        <span class="decorations_chapter decoration_left"></span>
+      <span class="number">{{chapter.id}}</span>
+      <span class="decorations_chapter decoration_left"></span>
+      </span>
+      <div class="align_content--left">
+        <h4>{{_slide.name}}</h4>
+        <div class="separator">
+          <div class="separator_left"></div>
         </div>
+        <p class="description">{{_slide.contents}} </p>
       </div>
+    </div>
   </div>
   {% endfor %}
 
-  <div class="section section_text" id="section7" style="
+  <div class="section section_text" id="Page7" style="
                                                          background: url('{{ global.request.basepath }}/assets/images/{{chapter.id}}/end.png') center center;
                                                          background-size: cover;
                                                          ">
@@ -80,25 +79,47 @@
 
       <span class="chapter_number">
         <span class="decorations_chapter decoration_left"></span>
-        <span class="number">{{ chapter.id }}</span>
-        <span class="decorations_chapter decoration_left"></span>
+      <span class="number">{{ chapter.id }}</span>
+      <span class="decorations_chapter decoration_left"></span>
       </span>
       <div class="align_content end-of-chapter">
         <p class="citation">
           {{ chapter.end }}
         </p>
-
-        <a href="{{ app.url_generator.generate('chapter', {'id': (chapter.id + 1)  } ) }}" class="discover"> {{chapter.endbtn}} </a>
-
+        <p class="citation" style="color: #FFC900;">
+          {{ chapter.end2 }}
+        </p>
+        <a href="{{ app.url_generator.generate('chapter', {'id': ( chapter.id + 1 )  } ) }}" class="discover"> {{chapter.endbtn}} </a>
       </div>
-
     </div>
   </div>
 </div>
 
-<footer class="footer" style="bottom:0px;">
+<div class="overlay-navigation" style="z-index: 10;">
+  <nav role="navigation">
+    <ul>
+      <li><a href="{{ url('chapter', {id: '1'}) }}" data-content="Introduction">Chapitre 1</a></li>
+      <li><a href="{{ url('chapter', {id: '2'}) }}" data-content="La colline du crack">Chapitre 2</a></li>
+      <li><a href="{{ url('chapter', {id: '3'}) }}" data-content="Le milieu">Chapitre 3</a></li>
+      <li><a href="{{ url('chapter', {id: '4'}) }}" data-content="De l'extérieur">Chapitre 4</a></li>
+    </ul>
+  </nav>
+</div>
+
+<footer class="footer">
+  <div class="wrapper_nav">
+    <a href="#" class="wrapper_nav_menu">
+      <span class="menu open-overlay">MENU</span>
+    </a>
+    <div class="wrapper_nav_chapter">
+      <span class="wrapper_nav_chapter-num">0{{chapter.id}}</span>
+      <span class="wrapper_nav_chapter-title">{{chapter.name}}</span>
+    </div>
+    <div id="btns-wrapper">
+    </div>
+  </div>
   <div class="wrapper-footer">
-    <p style="font-size: 10px;">© Tous droits réservés</p>
+    <p>© Tous droits réservés</p>
   </div>
 </footer>
 

@@ -1,20 +1,21 @@
 {{ include('partials/header.twig') }}
 
-<button id="muteBtn" style="position:fixed; top: 50px;">Mute</button>
+<a href="#" style="text-align: center; position: fixed; z-index: 1000; top: 50px; left: 50px;" onclick="muteAudio()"><img style="width: 30px; height:30px;" src="{{ global.request.basepath }}/assets/images/sound.svg"/></a>
 
-  <section class="sections section_commencer demo-5">
-    <div class="sections_wrapper">
-     <div class="segmenter" style="background-image: url({{global.request.basepath}}/assets/images/commencer.jpg)"></div>
-      <h2 class="trigger-headline trigger-headline--hidden"><span>C</span><span>R</span><span>A</span><span>C</span><span>K</span><span>O</span><span>P</span><span>A</span><span>R</span><span>I</span><span>S</span></h2>
-      <a href="#" class="btns">COMMENCER</a>
-    </div>
+<div id="fullpage">
+  <section class="section sections section_commencer">
+    <video class="myVideo" data-autoplay style="z-index: -1000;" style="position: fixed; top:0;">
+        <source src="{{ global.request.basepath }}/assets/videos/intro.mp4" type="video/mp4">
+    </video>
+    <h2 class="title_intro" style="
+  text-align: center; font-size: 6em;">Crackopolis</h2>
+
+    <a href="{{ url('chapter', {id: '1'}) }}" class="btns" style="text-align: center;">
+                    COMMENCER
+      </a>
+
   </section>
-
-<footer class="footer">
-  <div class="wrapper-footer">
-    <p>© Tous droits réservés</p>
-  </div>
-</footer>
+</div>
 
 
 <script src="{{global.request.basepath}}/assets/js/anime.min.js"></script>
